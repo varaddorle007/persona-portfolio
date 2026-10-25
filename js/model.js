@@ -7,6 +7,14 @@ const Model = {
 
   githubUser: "varaddorle007",
 
+  // Official Socials & Links
+  socials: {
+    github: "https://github.com/varaddorle007",
+    linkedin: "https://www.linkedin.com/in/varad-dorle-ba6049395/",
+    instagram: "https://www.instagram.com/varad.dorle/",
+    email: "dorlevarad25@gmail.com",
+  },
+
   // Where the contact form delivers (via formsubmit.co relay)
   contactEmail: "dorlevarad25@gmail.com",
 

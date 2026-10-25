@@ -377,17 +377,29 @@ body[data-screen]:not([data-screen="home"]) #slash{
   display:inline-block;background:var(--black);color:var(--white);
   padding:2px 8px;transform:rotate(-2deg);font-weight:700;
 }
-.contact-list{display:flex;flex-wrap:wrap;gap:20px;padding-bottom:6vh;}
+.contact-list{display:flex;flex-wrap:wrap;gap:18px;padding-bottom:6vh;}
 .contact-chip{
   background:var(--black);color:var(--white);text-decoration:none;
   font-family:'Archivo Black','Arial Black',Impact,sans-serif;
-  font-size:clamp(16px,2vw,22px);text-transform:uppercase;
-  padding:14px 26px;transform:skewX(-8deg) rotate(-1deg);
-  transition:transform .15s, background .15s, color .15s;
+  font-size:clamp(15px,1.8vw,20px);text-transform:uppercase;
+  padding:12px 22px;transform:skewX(-8deg) rotate(-1deg);
+  transition:transform .15s, background .15s, color .15s, box-shadow .15s;
   box-shadow:6px 6px 0 rgba(0,0,0,.4);
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+}
+.contact-chip svg{
+  width:20px;
+  height:20px;
+  fill:currentColor;
+  flex-shrink:0;
+  transform:skewX(8deg);
+  transition:transform .15s;
 }
 .contact-chip span{display:inline-block;transform:skewX(8deg);}
-.contact-chip:hover{background:var(--white);color:var(--red);transform:skewX(-8deg) rotate(0) scale(1.06);}
+.contact-chip:hover{background:var(--white);color:var(--red);transform:skewX(-8deg) rotate(0) scale(1.06);box-shadow:8px 8px 0 rgba(0,0,0,.55);}
+.contact-chip:hover svg{transform:skewX(8deg) scale(1.15);}
 
 /* ============ IMAGE SLOTS ============ */
 /* 1. Hero art — big character/portrait on the right, over the black slash */
@@ -423,7 +435,7 @@ body[data-screen]:not([data-screen="home"]) #hero-art{
 /* 3. About photo — taped-up polaroid */
 .about-photo{
   float:right;width:min(240px,38%);margin:0 0 14px 22px;
-  background:var(--white);padding:10px 10px 34px;
+  background:var(--white);padding:10px 10px 14px;
   transform:rotate(3deg);
   box-shadow:8px 8px 0 rgba(0,0,0,.35);
   position:relative;
@@ -437,6 +449,84 @@ body[data-screen]:not([data-screen="home"]) #hero-art{
 .about-photo figcaption{
   text-align:center;margin-top:8px;font-weight:700;letter-spacing:.14em;
   text-transform:uppercase;font-size:12px;color:var(--ink);
+}
+
+/* Polaroid Socials Badge Row */
+.polaroid-socials{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:8px;
+}
+.pol-social-btn{
+  width:32px;
+  height:32px;
+  background:#14171f;
+  color:#f1f5f9;
+  border:1.5px solid #282f3c;
+  border-radius:6px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  transition:transform .18s cubic-bezier(0.16, 1, 0.3, 1), background .18s, color .18s, border-color .18s, box-shadow .18s;
+  box-shadow:2px 2px 0 rgba(0,0,0,0.25);
+}
+.pol-social-btn svg{
+  width:16px;
+  height:16px;
+  fill:currentColor;
+}
+.pol-social-btn:hover{
+  background:var(--blue);
+  color:#000;
+  border-color:var(--blue);
+  transform:translateY(-2px) scale(1.15);
+  box-shadow:0 4px 12px rgba(0,210,255,0.45);
+}
+
+/* About Section Bottom Social Chips Bar */
+.about-social-bar{
+  display:flex;
+  gap:12px;
+  margin:22px 0 18px;
+  flex-wrap:wrap;
+}
+.about-social-chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--black);
+  color:var(--white);
+  padding:8px 16px;
+  border:1.5px solid #2a2a2a;
+  font-family:'Barlow Condensed', sans-serif;
+  font-size:14px;
+  font-weight:700;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  text-decoration:none;
+  transform:skewX(-6deg);
+  box-shadow:4px 4px 0 rgba(0,0,0,0.35);
+  transition:all 0.18s ease;
+}
+.about-social-chip:hover{
+  background:var(--blue);
+  color:var(--black);
+  border-color:var(--blue);
+  transform:skewX(-6deg) translateY(-2px);
+  box-shadow:4px 6px 0 rgba(0,0,0,0.5);
+}
+.about-social-chip svg{
+  width:16px;
+  height:16px;
+  fill:currentColor;
+  transform:skewX(6deg);
+  flex-shrink:0;
+}
+.about-social-chip span{
+  transform:skewX(6deg);
+  display:inline-block;
 }
 
 /* ============ WIPE TRANSITION ============ */

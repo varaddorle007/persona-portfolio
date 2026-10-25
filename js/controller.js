@@ -20,6 +20,25 @@ const Controller = {
       homeVid.muted = true;
       homeVid.play().catch(() => {});
     }
+
+    // Handle deep-link query or hash navigation on load
+    const params = new URLSearchParams(window.location.search);
+    const screenParam = (params.get("screen") || "").toLowerCase();
+    const hashParam = window.location.hash.replace("#", "").toLowerCase();
+    const initialScreen = screenParam || hashParam;
+    if (initialScreen && ["projects", "games", "skills", "about", "contact"].includes(initialScreen)) {
+      Model.state.screen = initialScreen;
+      View.showScreen(initialScreen);
+      if (initialScreen === "projects") this.loadProjects();
+      if (initialScreen === "skills") this.loadSkills();
+    }
+
+    window.addEventListener("hashchange", () => {
+      const target = window.location.hash.replace("#", "").toLowerCase() || "home";
+      if (["home", "projects", "games", "skills", "about", "contact"].includes(target)) {
+        this.goTo(target);
+      }
+    });
   },
 
   /* ---------- Contact form (relayed via formsubmit.co, mailto fallback) ---------- */
@@ -76,6 +95,9 @@ goTo(screen) {
       () => {                       // mid-wipe: swap screens while covered
         Model.state.screen = screen;
         View.showScreen(screen);
+        try {
+          history.replaceState(null, "", screen === "home" ? window.location.pathname + window.location.search : "#" + screen);
+        } catch (_) {}
         if (screen === "projects") this.loadProjects();
         if (screen === "skills") this.loadSkills();
         if (screen === "home") {
